@@ -1,3 +1,8 @@
+class Token:
+
+    pass
+
+
 '''
 
 ORDER

@@ -5,15 +5,6 @@ class LiteralToken(Token):
 
 class StringLiteral(LiteralToken):
 
+    quote_type = '\''
     prefix = ''
     content = ''
-
-
-class IntLiteral(LiteralToken):
-
-    value = 0
-
-
-class FloatLiteral(LiteralToken):
-
-    value = 0

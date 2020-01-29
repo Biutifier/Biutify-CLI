@@ -1,4 +1,0 @@
-# String Literal
-
-* f string
-..* 

@@ -1,14 +1,39 @@
 # import cli.file_tree
 # import cli.node
 
-def tokenize(file_path: str):
+grouping_chars = [
+  ('(', ')'),
+  ('[', ']'),
+  ('{', '}')
+]
 
-  with open(file_path, 'r') as file:
-    raw_text = file.read()
-    for index in range(len(raw_text)):
+def tokenize(raw_text: str, exit_char: str = None) -> int:
 
-      # check for grouping character
-      pass
+  result = []
+  index = 0
+
+  while index < len(raw_text):
+
+    if raw_text[index] == exit_char:
+      return result, index
+
+    # check for grouping character
+    print(raw_text[index])
+    for e_grouping_char in grouping_chars:
+      # print(raw_text[index])
+      if raw_text[index] == e_grouping_char[0]:
+        group = tokenize(raw_text[index + 1:], e_grouping_char[1])
+        result.append(group[0])
+        index += group[1] + 1
+        break
+    else:
+      result.append(raw_text[index])
+
+    index += 1
+
+  return result, index
 
 
-tokenize('/home/zachchampion/Documents/work.txt')
+
+with open('cli/test.txt', 'r') as f:
+  print(tokenize(f.read()))

@@ -1,3 +1,4 @@
 .vscode/
 CLI/__pycache__
 testfile.json
+*.pyc

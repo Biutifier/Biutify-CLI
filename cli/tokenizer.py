@@ -7,6 +7,8 @@ grouping_chars = [
   ('{', '}')
 ]
 
+def create_groups
+
 def tokenize(raw_text: str, exit_char: str = None) -> int:
 
   result = []

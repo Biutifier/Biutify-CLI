@@ -1,4 +1,4 @@
-# import cli.file_tree
+from cli.tree.file_tree import FileTree
 # import cli.node
 
 grouping_chars = [
@@ -7,7 +7,10 @@ grouping_chars = [
   ('{', '}')
 ]
 
-def create_groups
+def create_groups(raw_code: str):
+
+  tree = FileTree()
+
 
 def tokenize(raw_text: str, exit_char: str = None) -> int:
 

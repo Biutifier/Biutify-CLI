@@ -30,7 +30,7 @@ class Node:
   """
 
 
-  def __init__(self, parent: Node = None, children: List[Node] = []):
+  def __init__(self, parent = None, children = []):
     self.children = []
     self.parent = None
 
@@ -48,7 +48,7 @@ class Node:
     return self.parent is None
 
 
-  def create_child(self, node: Node):
+  def create_child(self, node):
     """
     Create a child to this Node.
 

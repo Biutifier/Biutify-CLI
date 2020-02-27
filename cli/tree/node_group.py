@@ -1,3 +1,4 @@
+from typing import List
 from node import Node
 from enum import Enum
 
@@ -10,6 +11,17 @@ class NodeGroup(Node):
   A group includes anything between parenthesis, brackets, or curly braces.
 
   Parameters
+  ----------
+  type : GroupType
+    The type of group that this represents (paren, list, or curly).
+  parent : Node, optional
+    The parent of this Node.
+    Default is None, which implies this to be a root Node.
+  children : List[Node], optional
+    The children of this Node.
+    Default is empty.
+
+  Attributes
   ----------
   type : GroupType
     The type of group that this represents (paren, list, or curly).
@@ -45,4 +57,8 @@ class NodeGroup(Node):
       'end_char'  : '}'
     }
 
+  
+  def __init__(self, type: GroupType, parent: Node = None, children: List[Node] = []):
+    super().__init__(parent, children)
+    self.type = type
   

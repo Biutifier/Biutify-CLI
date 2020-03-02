@@ -1,5 +1,5 @@
 from typing import List
-from node import Node
+from cli.tree.node import Node
 
 class NodeRawCode(Node):
   """

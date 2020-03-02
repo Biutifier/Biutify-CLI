@@ -1,5 +1,7 @@
 from cli.tree.file_tree import FileTree
-# import cli.node
+from cli.tree.node import Node
+from cli.tree.node_group import NodeGroup
+from cli.tree.node_raw_code import NodeRawCode
 
 grouping_chars = [
   ('(', ')'),
@@ -7,9 +9,61 @@ grouping_chars = [
   ('{', '}')
 ]
 
-def create_groups(raw_code: str):
+def create_groups(raw_code: str, root_node: Node = Node(), exit_char: str = None) -> Node:
+  """
+  Take raw code and extract groups.
 
-  tree = FileTree()
+  Extended Summary
+  ----------------
+  Will convert all non-group code to NodeRawCode objects.
+  NodeGroups and NodeRawCodes will be added as children to root_node
+
+  Parameters
+  ----------
+  raw_code : str
+    The code to be grouped.
+  root_node : Node, optional
+    The node that will parent the generated NodeGroups and NodeRawCodes.
+  exit_char : str, optional
+    The character that will end the group.
+
+  Returns
+  -------
+  Node
+    A reference to the node that parents the generated NodeGroups and NodeRawCodes.
+  int
+    The length of raw_code that was used (either len(raw_code), or shorter because it found exit_char)
+  """
+
+  current_raw_code = ''
+  index = 0
+
+  while index < len(raw_code):
+
+    # check for end of group
+    if raw_code[index] == exit_char:
+      return root_node, index
+
+    # check for grouping character
+    for e_grouping_char in grouping_chars:
+      if raw_code[index] == e_grouping_char[0]:
+
+        # commit current code and create group
+        root_node.create_child(NodeRawCode(current_raw_code))
+        group_node = root_node.create_child(NodeGroup.create_from_char(e_grouping_char[0]))
+        group, group_index = tokenize(raw_code[index + 1:], group_node, e_grouping_char[1])
+        index += group_index + 1
+        break
+
+    else:
+      current_raw_code += raw_code[index]
+
+      index += 1
+
+    return root_node, index
+
+
+
 
 
 def tokenize(raw_text: str, exit_char: str = None) -> int:

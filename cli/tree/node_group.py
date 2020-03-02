@@ -1,5 +1,5 @@
 from typing import List
-from node import Node
+from cli.tree.node import Node
 from enum import Enum
 
 class NodeGroup(Node):
@@ -56,6 +56,23 @@ class NodeGroup(Node):
       'start_char': '{',
       'end_char'  : '}'
     }
+
+
+  @classmethod
+  def create_from_char(cls, start_char: str) -> NodeGroup:
+    """
+    Create a NodeGroup based on a starting character, e.g. '(', '{', or '['.
+
+    Parameters
+    ----------
+    start_char : str
+      The character to base the GroupType on
+    """
+
+    if start_char == '(': return NodeGroup(NodeGroup.GroupType.PAREN)
+    if start_char == '[': return NodeGroup(NodeGroup.GroupType.BRACKET)
+    if start_char == '{': return NodeGroup(NodeGroup.GroupType.CURLY)
+    return None
 
   
   def __init__(self, type: GroupType, parent: Node = None, children: List[Node] = []):

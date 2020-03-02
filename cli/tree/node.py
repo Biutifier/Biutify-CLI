@@ -31,8 +31,8 @@ class Node:
 
 
   def __init__(self, parent = None, children = []):
-    self.children = []
-    self.parent = None
+    self.children = children
+    self.parent = parent
 
 
   def is_root(self) -> bool:
@@ -48,7 +48,7 @@ class Node:
     return self.parent is None
 
 
-  def create_child(self, node):
+  def create_child(self, node) -> Node:
     """
     Create a child to this Node.
 
@@ -60,3 +60,4 @@ class Node:
 
     node.parent = self
     self.children.append(node)
+    return self.children[-1]

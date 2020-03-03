@@ -1,4 +1,4 @@
-from cli.tree.node import Node
+from tree.node import Node
 
 class FileTree:
 

@@ -30,16 +30,18 @@ class Node:
   """
 
 
-  def __init__(self, parent = None, children = []):
+  def __init__(self, parent = None, children = None):
     self.parent = parent
-    self.children = children
+    self.children = [] if children is None else children
 
 
   def __str__(self):
-    result = "NODE\n----"
+    result = "NODE\n"
     for child in self.children:
-      result += "\n\t" + str(child)
-    return result
+      child_str = str(child)
+      for line in child_str.split('\n'):
+        result += "\n    " + line
+    return result + '--------------- NODE\n'
 
 
   def is_root(self) -> bool:
@@ -65,8 +67,5 @@ class Node:
       The new child that should be added to this Node.
     """
 
-    node.parent = self
-    print('before', self.children, node.children)
     self.children.append(node)
-    print('after ', self.children, node.children)
     return self.children[-1]

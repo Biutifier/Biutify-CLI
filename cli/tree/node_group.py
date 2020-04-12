@@ -75,15 +75,17 @@ class NodeGroup(Node):
     return None
 
   
-  def __init__(self, type: GroupType, parent: Node = None, children: List[Node] = []):
+  def __init__(self, type: GroupType, parent: Node = None, children: List[Node] = None):
     super().__init__(parent, children)
     self.type = type
 
 
   def __str__(self):
-    result = "NODE GROUP\nType: " + "\n----------"
-    # print(self.children)
-    # for child in self.children:
-      # result += "\n\t" + str(child)
-    return result
+    result = "NODE GROUP\nType: " + str(self.type) + "\n"
+    print(self.children)
+    for child in self.children:
+      child_str = str(child)
+      for line in child_str.split('\n'):
+        result += "\n    " + line
+    return result + '--------------- GROUP ' + str(self.type) + '\n'
   

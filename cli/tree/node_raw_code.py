@@ -23,7 +23,7 @@ class NodeRawCode(Node):
   """
 
 
-  def __init__(self, code : str, parent: Node = None, children: List[Node] = []):
+  def __init__(self, code : str, parent: Node = None, children: List[Node] = None):
     super().__init__(parent, children)
     self.code = code
 
@@ -31,5 +31,7 @@ class NodeRawCode(Node):
   def __str__(self):
     result = "NODE RAW CODE\nCode: " + self.code + "\n----------"
     for child in self.children:
-      result += "\n\t" + str(child)
-    return result
+      child_str = str(child)
+      for line in child_str.split('\n'):
+        result += "\n    " + line
+    return result + '--------------- RAW\n'

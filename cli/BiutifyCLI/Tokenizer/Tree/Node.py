@@ -36,12 +36,12 @@ class Node:
 
 
   def __str__(self):
-    result = "NODE\n"
+    result = "\nNODE\n"
     for child in self.children:
       child_str = str(child)
       for line in child_str.split('\n'):
-        result += "\n    " + line
-    return result + '--------------- NODE\n'
+        result += "\n|   " + line
+    return result
 
 
   def is_root(self) -> bool:

@@ -10,7 +10,7 @@ grouping_chars = [
 ]
 
 l = 0
-def create_groups(raw_code: str, root_node: Node = Node(), exit_char: str = None, layer = 0) -> Node:
+def create_groups(raw_code: str, root_node: Node = Node(), exit_char: str = None, layer = 0) -> (Node, int):
   """
   Take raw code and extract groups.
 
@@ -39,13 +39,15 @@ def create_groups(raw_code: str, root_node: Node = Node(), exit_char: str = None
   current_raw_code = ''
   index = 0
   layer += 1
-  print(layer, raw_code + '\n\n')
+  # print(str(layer) + '\n---\n' + raw_code + '\n\n')
 
   while index < len(raw_code):
 
     # check for end of group
     if raw_code[index] == exit_char:
       layer -= 1
+      print(str(layer) + '\n---\n' + current_raw_code + '\n\n')
+      root_node.create_child(NodeRawCode(current_raw_code))
       return root_node, index
 
     # check for grouping character
@@ -54,6 +56,7 @@ def create_groups(raw_code: str, root_node: Node = Node(), exit_char: str = None
 
         # commit current code and create group
         # print(current_raw_code + "\n\n")
+        print(str(layer) + '\n---\n' + current_raw_code + '\n\n')
         root_node.create_child(NodeRawCode(current_raw_code))
         group_node = root_node.create_child(NodeGroup.create_from_char(e_grouping_char[0]))
         _, group_index = create_groups(raw_code[(index + 1):], group_node, e_grouping_char[1], layer)
@@ -67,6 +70,7 @@ def create_groups(raw_code: str, root_node: Node = Node(), exit_char: str = None
     index += 1
 
   layer -= 1
+  # print(str(layer) + '\n---\n' + current_raw_code + '\n\n')
   return root_node, index
 
 

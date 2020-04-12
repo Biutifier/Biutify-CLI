@@ -81,11 +81,11 @@ class NodeGroup(Node):
 
 
   def __str__(self):
-    result = "NODE GROUP\nType: " + str(self.type) + "\n"
+    result = "\nNODE GROUP\nType: " + str(self.type) + "\n"
     print(self.children)
     for child in self.children:
       child_str = str(child)
       for line in child_str.split('\n'):
-        result += "\n    " + line
-    return result + '--------------- GROUP ' + str(self.type) + '\n'
+        result += "\n|   " + line
+    return result
   

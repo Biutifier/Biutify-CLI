@@ -29,9 +29,9 @@ class NodeRawCode(Node):
 
 
   def __str__(self):
-    result = "NODE RAW CODE\nCode: " + self.code + "\n----------"
+    result = "\nNODE RAW CODE\n" + self.code + "\n"
     for child in self.children:
       child_str = str(child)
       for line in child_str.split('\n'):
-        result += "\n    " + line
-    return result + '--------------- RAW\n'
+        result += "\n|   " + line
+    return result

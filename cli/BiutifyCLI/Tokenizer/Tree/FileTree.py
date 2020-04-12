@@ -1,4 +1,4 @@
-from tree.node import Node
+from .Node import Node
 
 class FileTree:
 

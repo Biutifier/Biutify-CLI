@@ -1,7 +1,7 @@
-from tree.file_tree import FileTree
-from tree.node import Node
-from tree.node_group import NodeGroup
-from tree.node_raw_code import NodeRawCode
+from .Tree.FileTree import FileTree
+from .Tree.Node import Node
+from .Tree.NodeGroup import NodeGroup
+from .Tree.NodeRawCode import NodeRawCode
 
 grouping_chars = [
   ('(', ')'),
@@ -98,9 +98,3 @@ def create_groups(raw_code: str, root_node: Node = Node(), exit_char: str = None
 #     index += 1
 
 #   return result, index
-
-
-
-with open('cli/test.txt', 'r') as f:
-  print(str(create_groups(f.read())[0]))
-  # create_groups(f.read())

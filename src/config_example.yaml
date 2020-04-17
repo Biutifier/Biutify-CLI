@@ -1,0 +1,101 @@
+---
+indent with: '  '
+concat with: ' + '
+
+string:
+  preferred quote: '"'
+
+list:
+  begin with: '['
+  end with: ']'
+  separate with: ', '
+  newline after: 'never'
+  indent newline with: '  '
+
+tuple:
+  begin with: '('
+  end with: ')'
+  separate with: ', '
+  newline after: 3
+  indent newline with: '  '
+
+set:
+  begin with: '{'
+  end with: '}'
+  separate with: ', '
+  newline after: 3
+  indent newline with: '  '
+
+dict:
+  begin with: '{'
+  end with: '}'
+  separate with: ', '
+  pair with: ' : '
+  newline after: 2
+  indent newline with: '  '
+
+variable:
+  star with: '*'
+
+operator:
+
+  # unary operators
+  invert: '~'
+  not: 'not '
+  uadd: '+'
+  usub: '-'
+
+  # binary operators
+  add: ' + '
+  sub: ' - '
+  mult: ' * '
+  div: ' / '
+  floordiv: ' // '
+  mod: ' % '
+  pow: '**'
+  lshift: ' << '
+  rshift: ' >> '
+  bitor: ' | '
+  bitxor: ' ^ '
+  bitand: ' & '
+  matmult: ' @ '
+
+  # boolean operators
+  and: ' and '
+  or: ' or '
+
+  # comparison operators
+  eq: ' == '
+  noteq: ' != '
+  lt: ' < '
+  lte: ' <= '
+  gt: ' > '
+  gte: ' >= '
+  is: ' is '
+  isnot: ' is not '
+  in: ' in '
+  notin: ' not in '
+
+function call:
+  start args with: '('
+  separate args with: ', '
+  end args with: ')'
+
+keyword:
+  assign with: ' = '
+
+if expression:
+  if: ' if '
+  else: ' else '
+
+attribute:
+  access with: '.'
+
+assign:
+  assign with: ' = '
+  separate with: ', '
+
+if:
+  separate single line: false
+  colon: ': '
+  indent: '  '
